@@ -8,12 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		8C3FA9422C7A4A410095C2FC /* CSTVApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9412C7A4A410095C2FC /* CSTVApp.swift */; };
-		8C3FA9442C7A4A410095C2FC /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9432C7A4A410095C2FC /* ContentView.swift */; };
+		8C3FA9442C7A4A410095C2FC /* MatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9432C7A4A410095C2FC /* MatchListView.swift */; };
 		8C3FA9462C7A4A430095C2FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3FA9452C7A4A430095C2FC /* Assets.xcassets */; };
 		8C3FA9492C7A4A430095C2FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3FA9482C7A4A430095C2FC /* Preview Assets.xcassets */; };
 		8C3FA9532C7A4A430095C2FC /* CSTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9522C7A4A430095C2FC /* CSTVTests.swift */; };
 		8C3FA95D2C7A4A430095C2FC /* CSTVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA95C2C7A4A430095C2FC /* CSTVUITests.swift */; };
 		8C3FA95F2C7A4A430095C2FC /* CSTVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA95E2C7A4A430095C2FC /* CSTVUITestsLaunchTests.swift */; };
+		8C3FA96E2C7A63D30095C2FC /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA96D2C7A63D30095C2FC /* MatchCardView.swift */; };
+		8C3FA9702C7A63F80095C2FC /* MatchTimeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA96F2C7A63F80095C2FC /* MatchTimeView.swift */; };
+		8C3FA9732C7CDF570095C2FC /* MatchDetailsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9722C7CDF570095C2FC /* MatchDetailsView.swift */; };
+		8C3FA9752C7D00EE0095C2FC /* MatchTeamsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9742C7D00EE0095C2FC /* MatchTeamsView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,7 +40,7 @@
 /* Begin PBXFileReference section */
 		8C3FA93E2C7A4A410095C2FC /* CSTV.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CSTV.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3FA9412C7A4A410095C2FC /* CSTVApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVApp.swift; sourceTree = "<group>"; };
-		8C3FA9432C7A4A410095C2FC /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		8C3FA9432C7A4A410095C2FC /* MatchListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchListView.swift; sourceTree = "<group>"; };
 		8C3FA9452C7A4A430095C2FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C3FA9482C7A4A430095C2FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8C3FA94E2C7A4A430095C2FC /* CSTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -44,6 +48,10 @@
 		8C3FA9582C7A4A430095C2FC /* CSTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3FA95C2C7A4A430095C2FC /* CSTVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVUITests.swift; sourceTree = "<group>"; };
 		8C3FA95E2C7A4A430095C2FC /* CSTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		8C3FA96D2C7A63D30095C2FC /* MatchCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchCardView.swift; sourceTree = "<group>"; };
+		8C3FA96F2C7A63F80095C2FC /* MatchTimeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTimeView.swift; sourceTree = "<group>"; };
+		8C3FA9722C7CDF570095C2FC /* MatchDetailsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsView.swift; sourceTree = "<group>"; };
+		8C3FA9742C7D00EE0095C2FC /* MatchTeamsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTeamsView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,8 +102,10 @@
 		8C3FA9402C7A4A410095C2FC /* CSTV */ = {
 			isa = PBXGroup;
 			children = (
+				8C3FA96C2C7A639E0095C2FC /* Components */,
+				8C3FA9712C7CDF480095C2FC /* MatchDetails */,
+				8C3FA96B2C7A63830095C2FC /* MatchList */,
 				8C3FA9412C7A4A410095C2FC /* CSTVApp.swift */,
-				8C3FA9432C7A4A410095C2FC /* ContentView.swift */,
 				8C3FA9452C7A4A430095C2FC /* Assets.xcassets */,
 				8C3FA9472C7A4A430095C2FC /* Preview Content */,
 			);
@@ -125,6 +135,32 @@
 				8C3FA95E2C7A4A430095C2FC /* CSTVUITestsLaunchTests.swift */,
 			);
 			path = CSTVUITests;
+			sourceTree = "<group>";
+		};
+		8C3FA96B2C7A63830095C2FC /* MatchList */ = {
+			isa = PBXGroup;
+			children = (
+				8C3FA9432C7A4A410095C2FC /* MatchListView.swift */,
+			);
+			path = MatchList;
+			sourceTree = "<group>";
+		};
+		8C3FA96C2C7A639E0095C2FC /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				8C3FA96D2C7A63D30095C2FC /* MatchCardView.swift */,
+				8C3FA96F2C7A63F80095C2FC /* MatchTimeView.swift */,
+				8C3FA9742C7D00EE0095C2FC /* MatchTeamsView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		8C3FA9712C7CDF480095C2FC /* MatchDetails */ = {
+			isa = PBXGroup;
+			children = (
+				8C3FA9722C7CDF570095C2FC /* MatchDetailsView.swift */,
+			);
+			path = MatchDetails;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -257,8 +293,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C3FA9442C7A4A410095C2FC /* ContentView.swift in Sources */,
+				8C3FA9442C7A4A410095C2FC /* MatchListView.swift in Sources */,
+				8C3FA9702C7A63F80095C2FC /* MatchTimeView.swift in Sources */,
+				8C3FA96E2C7A63D30095C2FC /* MatchCardView.swift in Sources */,
+				8C3FA9732C7CDF570095C2FC /* MatchDetailsView.swift in Sources */,
 				8C3FA9422C7A4A410095C2FC /* CSTVApp.swift in Sources */,
+				8C3FA9752C7D00EE0095C2FC /* MatchTeamsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
