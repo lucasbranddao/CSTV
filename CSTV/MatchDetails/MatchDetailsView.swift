@@ -15,6 +15,7 @@ enum TeamMatchSide {
 struct MatchDetailsView: View {
 
     @Environment(\.presentationMode) var presentationMode
+    let match: Match
 
     var body: some View {
         ZStack {
@@ -38,7 +39,7 @@ struct MatchDetailsView: View {
                 }
                 .frame(maxWidth: .infinity)
 
-                MatchTeamsView()
+                MatchTeamsView(homeTeam: match.opponents[safe: 0]?.opponent, awayTeam: match.opponents[safe: 1]?.opponent)
 
                 // Date and Time
                 Text("Hoje, 21:00")
@@ -60,6 +61,10 @@ struct MatchDetailsView: View {
         }
         .navigationViewStyle(StackNavigationViewStyle())
         .navigationBarHidden(true) // Hide the navigation bar entirely
+    }
+
+    init(match: Match) {
+        self.match = match
     }
 }
 
@@ -117,8 +122,31 @@ struct PlayerCardView: View {
 }
 
 struct MatchDetailsView_Previews: PreviewProvider {
+
     static var previews: some View {
-        MatchDetailsView()
+        let mockedLeague = League(name: "ESL Pro League")
+
+        // Mock Teams
+        let team1 = Team(name: "Team Liquid", imageURL: "https://example.com/team-liquid-logo.png")
+        let team2 = Team(name: "Astralis", imageURL: "https://example.com/astralis-logo.png")
+
+        // Mock Opponents
+        let opponent1 = Opponent(opponent: team1)
+        let opponent2 = Opponent(opponent: team2)
+
+        // Mock Results
+        let result1 = Result(score: 16, teamID: 1) // Team Liquid won
+        let result2 = Result(score: 14, teamID: 2) // Astralis lost
+
+        // Mock Match
+        let mockedMatch = Match(
+            beginAt: "2024-09-15T14:00:00Z",  // ISO 8601 format
+            league: mockedLeague,
+            opponents: [opponent1, opponent2],
+            results: [result1, result2],
+            status: "finished"
+        )
+        MatchDetailsView(match: mockedMatch)
             .previewLayout(.sizeThatFits)
             .padding()
     }

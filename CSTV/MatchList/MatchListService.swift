@@ -1,0 +1,49 @@
+//
+//  MatchListService.swift
+//  CSTV
+//
+//  Created by Lucas Brandão on 27/08/24.
+//
+
+import Foundation
+
+protocol MatchListServiceProtocol {
+    func getMatches(completion: @escaping (Swift.Result<Matches, Error>) -> Void)
+}
+
+final class MatchListService: MatchListServiceProtocol {
+
+    private let apiUrl = URL(string: "https://api.pandascore.co/matches?page[size]=5&page[number]=2")
+
+    func getMatches(completion: @escaping (Swift.Result<Matches, Error>) -> Void) {
+        guard let apiUrl else { return }
+        var request = URLRequest(url: apiUrl)
+        request.addValue("application/json", forHTTPHeaderField: "accept")
+
+        // remover token do commit
+        request.addValue("Bearer g2TV5SyVD7bTgvBmg05aE8MujczOku_8oX0nmSreRRQhFZOQx5o", forHTTPHeaderField: "Authorization")
+
+
+        let task = URLSession.shared.dataTask(with: request) { data, response, error in
+            if let error = error {
+                completion(.failure(error))
+                return
+            }
+
+            guard let data = data else {
+                let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey : "No data received"])
+                completion(.failure(error))
+                return
+            }
+
+            do {
+                let decoder = JSONDecoder()
+                let matchDetails = try decoder.decode(Matches.self, from: data)
+                completion(.success(matchDetails))
+            } catch {
+                completion(.failure(error))
+            }
+        }
+        task.resume()
+    }
+}
