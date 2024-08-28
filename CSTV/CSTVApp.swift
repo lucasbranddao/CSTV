@@ -16,7 +16,7 @@ struct CSTVApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MatchListView()
+            MatchListView(viewModel: MatchListViewModel(service: MatchListService()))
         }
     }
 

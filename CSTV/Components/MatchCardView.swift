@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MatchCardView: View {
+
+    let match: Match
+
     var body: some View {
         VStack {
             HStack {
@@ -18,7 +21,7 @@ struct MatchCardView: View {
             }
             .padding([.top, .trailing], -2)
 
-            MatchTeamsView()
+            MatchTeamsView(homeTeam: match.opponents[safe: 0]?.opponent, awayTeam: match.opponents[safe: 1]?.opponent)
             Spacer()
             Divider()
                 .background(.gray)
@@ -41,5 +44,9 @@ struct MatchCardView: View {
         .background(Color(red: 39/255, green: 38/255, blue: 57/255))
         .cornerRadius(16)
         .shadow(radius: 5)
+    }
+
+    init(match: Match) {
+        self.match = match
     }
 }

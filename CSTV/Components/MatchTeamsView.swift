@@ -8,18 +8,27 @@
 import SwiftUI
 
 struct MatchTeamsView: View {
+
+    let homeTeam: Team
+    let awayTeam: Team
+
     var body: some View {
         HStack(spacing: 20) {
-            TeamView(name: "Vitality")
+            TeamView(name: homeTeam.name)
                 .frame(width: 54, height: 82)
 
             Text("VS")
                 .foregroundColor(.white).opacity(0.5)
                 .font(.system(size: 12))
 
-            TeamView(name: "SK Gaming")
+            TeamView(name: awayTeam.name)
                 .frame(width: 54, height: 82)
         }
+    }
+
+    init(homeTeam: Team?, awayTeam: Team?) {
+        self.homeTeam = homeTeam ?? Team(name: "--", imageURL: nil)
+        self.awayTeam = awayTeam ?? Team(name: "--", imageURL: nil)
     }
 }
 
