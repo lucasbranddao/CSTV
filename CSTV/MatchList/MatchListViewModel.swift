@@ -21,34 +21,20 @@ final class MatchListViewModel: MatchListViewModelProtocol {
     }
     
     func fetchMatches() {
-            let mockedLeague = League(name: "ESL Pro League")
-            let serie = Serie(name: "North American Division")
+        let mockedMatch = Match(leagueAndSerie: "ESL + North American", homeTeam: Team(name: "SK Gaming", imageURL: nil), awayTeam: Team(name: "Team Liquid", imageURL: nil), status: .notStarted, beginAt: "2024-08-29T16:00:00Z")
+        self.matches = [mockedMatch]
+        return
 
-            // Mock Teams
-            let team1 = Team(name: "Team Liquid", imageURL: "https://example.com/team-liquid-logo.png")
-            let team2 = Team(name: "Astralis", imageURL: "https://example.com/astralis-logo.png")
-
-            // Mock Opponents
-            let opponent1 = Opponent(opponent: team1)
-            let opponent2 = Opponent(opponent: team2)
-
-            // Mock Results
-            let result1 = Result(score: 16, teamID: 1) // Team Liquid won
-            let result2 = Result(score: 14, teamID: 2) // Astralis lost
-
-            // Mock Match
-            let mockedMatch = Match(
-                beginAt: "2024-09-15T14:00:00Z",  // ISO 8601 format
-                league: mockedLeague,
-                opponents: [opponent1, opponent2],
-                results: [result1, result2],
-                status: "finished", serie: Serie(name: "North American Division")
-            )
         service.getMatches(completion: { result in
             switch result {
                 case .success(let matches):
                     DispatchQueue.main.async {
-                        self.matches = [mockedMatch]
+//                        self.matches = matches.compactMap({ Match(
+//                            leagueAndSerie: $0.league.name + " + " + serie.name,
+//                            homeTeam: $0.opponents[safe: 0]?.opponent,
+//                            awayTeam: $0.opponents[safe: 1]?.opponent,
+//                            status: Status(rawValue: $0.status) ?? .notStarted
+//                        )})
                     }
 
                 case  .failure(let error):
