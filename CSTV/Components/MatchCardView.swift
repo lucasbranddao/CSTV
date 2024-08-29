@@ -15,13 +15,13 @@ struct MatchCardView: View {
         VStack {
             HStack {
                 Spacer()
-                MatchTimeView()
+                MatchTimeView(text: match.timeString(), color: match.status.backgroundColor)
                     .padding(.top, -50)
                     .padding(.trailing, -20)
             }
             .padding([.top, .trailing], -2)
 
-            MatchTeamsView(homeTeam: match.mapHomeTeam(), awayTeam: match.mapHomeTeam())
+            MatchTeamsView(homeTeam: match.homeTeam, awayTeam: match.awayTeam)
             Spacer()
             Divider()
                 .background(.gray)
@@ -31,7 +31,7 @@ struct MatchCardView: View {
                     .fill(Color.gray)
                     .frame(width: 20, height: 20)
 
-                Text(match.mapLeagueSerie())
+                Text(match.leagueAndSerie)
                     .foregroundColor(.gray)
                     .font(.system(size: 8))
 

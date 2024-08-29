@@ -14,17 +14,17 @@ struct MatchTimeView: View {
 
     var body: some View {
         ZStack(alignment: .bottomLeading) {
-            Color.blue // Background color of the view
-                .cornerRadius(20) // Rounded corners with a radius of 20
+            color
+                .cornerRadius(20)
 
             Text(text)
-                .foregroundColor(color)
-                .font(. system(size: 10))
+                .foregroundColor(.white)
+                .font(.system(size: 10))
                 .fontWeight(.bold)
                 .padding(.bottom, 9)
-                .padding(.leading, 12)// Padding to position the label in the bottom-left corner
+                .padding(.leading, 8)
         }
-        .frame(width: 80, height: 80) // Set the size of the view
+        .frame(width: 100, height: 80)
     }
 
     init(text: String, color: Color) {

@@ -9,6 +9,7 @@ import SwiftUI
 
 @main
 struct CSTVApp: App {
+    
 
     init() {
         setupAppearance()
@@ -16,7 +17,7 @@ struct CSTVApp: App {
 
     var body: some Scene {
         WindowGroup {
-            MatchListView(viewModel: MatchListViewModel(service: MatchListService()))
+            ContentView()
         }
     }
 

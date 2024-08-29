@@ -33,16 +33,16 @@ struct MatchDetailsView: View {
                         Spacer()
                     }
 
-                    Text("Major série 1") // Custom title text
-                        .foregroundColor(.white) // Customize color
+                    Text(match.leagueAndSerie)
+                        .foregroundColor(.white)
                         .font(.headline)
                 }
                 .frame(maxWidth: .infinity)
 
-                MatchTeamsView(homeTeam: match.opponents[safe: 0]?.opponent, awayTeam: match.opponents[safe: 1]?.opponent)
+                MatchTeamsView(homeTeam: match.homeTeam, awayTeam: match.awayTeam)
 
                 // Date and Time
-                Text("Hoje, 21:00")
+                Text(match.timeString())
                     .foregroundColor(.white)
                     .font(.system(size: 12)).bold()
                     .padding(.bottom, 10)
@@ -118,37 +118,6 @@ struct PlayerCardView: View {
         self.side = side
         self.imageAlignment = side == .home ? .trailing : .leading
         self.cardAlignment = side == .home ? .leading : .trailing
-    }
-}
-
-struct MatchDetailsView_Previews: PreviewProvider {
-
-    static var previews: some View {
-        let mockedLeague = League(name: "ESL Pro League")
-
-        // Mock Teams
-        let team1 = Team(name: "Team Liquid", imageURL: "https://example.com/team-liquid-logo.png")
-        let team2 = Team(name: "Astralis", imageURL: "https://example.com/astralis-logo.png")
-
-        // Mock Opponents
-        let opponent1 = Opponent(opponent: team1)
-        let opponent2 = Opponent(opponent: team2)
-
-        // Mock Results
-        let result1 = Result(score: 16, teamID: 1) // Team Liquid won
-        let result2 = Result(score: 14, teamID: 2) // Astralis lost
-
-        // Mock Match
-        let mockedMatch = Match(
-            beginAt: "2024-09-15T14:00:00Z",  // ISO 8601 format
-            league: mockedLeague,
-            opponents: [opponent1, opponent2],
-            results: [result1, result2],
-            status: "finished", serie: Serie(name: "North American Division")
-        )
-        MatchDetailsView(match: mockedMatch)
-            .previewLayout(.sizeThatFits)
-            .padding()
     }
 }
 
