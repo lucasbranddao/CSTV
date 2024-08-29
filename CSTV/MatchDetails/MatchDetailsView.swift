@@ -144,7 +144,7 @@ struct MatchDetailsView_Previews: PreviewProvider {
             league: mockedLeague,
             opponents: [opponent1, opponent2],
             results: [result1, result2],
-            status: "finished"
+            status: "finished", serie: Serie(name: "North American Division")
         )
         MatchDetailsView(match: mockedMatch)
             .previewLayout(.sizeThatFits)

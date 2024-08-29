@@ -21,7 +21,7 @@ struct MatchCardView: View {
             }
             .padding([.top, .trailing], -2)
 
-            MatchTeamsView(homeTeam: match.opponents[safe: 0]?.opponent, awayTeam: match.opponents[safe: 1]?.opponent)
+            MatchTeamsView(homeTeam: match.mapHomeTeam(), awayTeam: match.mapHomeTeam())
             Spacer()
             Divider()
                 .background(.gray)
@@ -31,9 +31,9 @@ struct MatchCardView: View {
                     .fill(Color.gray)
                     .frame(width: 20, height: 20)
 
-                Text("League + serie")
+                Text(match.mapLeagueSerie())
                     .foregroundColor(.gray)
-                    .font(.caption)
+                    .font(.system(size: 8))
 
                 Spacer()
             }

@@ -15,14 +15,16 @@ struct MatchTeamsView: View {
     var body: some View {
         HStack(spacing: 20) {
             TeamView(name: homeTeam.name)
-                .frame(width: 54, height: 82)
+                .frame(width: 54, height: 100)
+                .multilineTextAlignment(.center)
 
             Text("VS")
                 .foregroundColor(.white).opacity(0.5)
                 .font(.system(size: 12))
 
             TeamView(name: awayTeam.name)
-                .frame(width: 54, height: 82)
+                .frame(width: 54, height: 100)
+                .multilineTextAlignment(.center)
         }
     }
 
@@ -38,11 +40,13 @@ struct TeamView: View {
         VStack {
             Circle()
                 .fill(Color.gray)
+                .frame(width: 60, height: 60)
             Spacer()
             Text(name)
                 .foregroundColor(.white)
                 .font(.system(size: 10))
                 .padding(.bottom, 8)
+                .frame(maxHeight: .infinity)
 
         }
     }
