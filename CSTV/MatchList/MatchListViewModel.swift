@@ -22,6 +22,7 @@ final class MatchListViewModel: MatchListViewModelProtocol {
     
     func fetchMatches() {
             let mockedLeague = League(name: "ESL Pro League")
+            let serie = Serie(name: "North American Division")
 
             // Mock Teams
             let team1 = Team(name: "Team Liquid", imageURL: "https://example.com/team-liquid-logo.png")
@@ -41,7 +42,7 @@ final class MatchListViewModel: MatchListViewModelProtocol {
                 league: mockedLeague,
                 opponents: [opponent1, opponent2],
                 results: [result1, result2],
-                status: "finished"
+                status: "finished", serie: Serie(name: "North American Division")
             )
         service.getMatches(completion: { result in
             switch result {
