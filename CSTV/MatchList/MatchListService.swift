@@ -19,8 +19,7 @@ final class MatchListService: MatchListServiceProtocol {
         guard let apiUrl else { return }
         var request = URLRequest(url: apiUrl)
         request.addValue("application/json", forHTTPHeaderField: "accept")
-
-        request.addValue("Bearer { INSIRA SEU TOKEN }", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer { Insira seu token }", forHTTPHeaderField: "Authorization")
 
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in

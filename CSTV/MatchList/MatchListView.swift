@@ -35,7 +35,7 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
             .navigationDestination(for: Destination.self) { destination in
                 switch destination {
                     case .matchDetails(let match):
-                        MatchDetailsView(match: match)
+                        MatchDetailsView(match: match, viewModel: MatchDetailsViewModel(service: MatchDetailsService()))
                 }
             }
         }

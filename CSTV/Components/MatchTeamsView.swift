@@ -29,8 +29,8 @@ struct MatchTeamsView: View {
     }
 
     init(homeTeam: Team?, awayTeam: Team?) {
-        self.homeTeam = homeTeam ?? Team(name: "--", imageURL: nil)
-        self.awayTeam = awayTeam ?? Team(name: "--", imageURL: nil)
+        self.homeTeam = homeTeam ?? Team(name: "--", imageURL: nil, id: 0)
+        self.awayTeam = awayTeam ?? Team(name: "--", imageURL: nil, id: 0)
     }
 }
 
