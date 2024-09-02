@@ -21,8 +21,7 @@ struct MatchDetailsView: View {
     var body: some View {
         ZStack {
             Color(red: 22/255, green: 22/255, blue: 30/255)
-                .edgesIgnoringSafeArea(.all) // Ensure the background color covers the entire screen
-
+                .edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
                 ZStack {
                     HStack {

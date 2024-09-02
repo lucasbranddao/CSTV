@@ -27,9 +27,14 @@ struct MatchCardView: View {
                 .background(.gray)
 
             HStack {
-                Circle()
-                    .fill(Color.gray)
-                    .frame(width: 20, height: 20)
+                AsyncImageView(
+                    url: URL(string: match.leagueImageUrl),
+                    failureView: {
+                        Circle()
+                            .fill(Color.gray)
+                            .frame(width: 20, height: 20)
+                    }
+                )
 
                 Text(match.leagueAndSerie)
                     .foregroundColor(.gray)

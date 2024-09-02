@@ -21,7 +21,7 @@ final class MatchListViewModel: MatchListViewModelProtocol {
     }
     
     func fetchMatches() {
-        let mockedMatch = Match(leagueAndSerie: "ESL + North American", homeTeam: Team(name: "SK Gaming", imageURL: nil, id: 1), awayTeam: Team(name: "Team Liquid", imageURL: nil, id: 2), status: .notStarted, beginAt: "2024-08-29T16:00:00Z")
+        let mockedMatch = Match(leagueAndSerie: "ESL + North American", leagueImageUrl: "https://cdn.psandascore.co/images/team/image/127597/577px_w7_m_esports_allmode.png", homeTeam: Team(name: "SK Gaming", imageURL: "https://cdn.pandascore.co/images/team/image/127597/577px_w7_m_esports_allmode.png", id: 1), awayTeam: Team(name: "Team Liquid", imageURL: "https://cdn.pandascore.co/images/team/image/127597/577px_w7_m_esports_allmode.png", id: 2), status: .notStarted, beginAt: "2024-08-29T16:00:00Z")
         self.matches = [mockedMatch]
         return
 
