@@ -14,7 +14,7 @@ protocol MatchDetailsServiceProtocol {
 
 final class MatchDetailsService: MatchDetailsServiceProtocol {
 
-    private let apiUrl = URL(string: "https://api.pandascore.co/teams/129606")
+    private let apiUrl = URL(string: "https://api.pandascore.co/teams/127597")
 
 
     func getPlayersPublisher() -> AnyPublisher<Players, Error> {
@@ -35,7 +35,7 @@ final class MatchDetailsService: MatchDetailsServiceProtocol {
         guard let apiUrl else { return }
         var request = URLRequest(url: apiUrl)
         request.addValue("application/json", forHTTPHeaderField: "accept")
-        request.addValue("Bearer { Insira seu token }", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer { Insira seu Token }", forHTTPHeaderField: "Authorization")
 
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
