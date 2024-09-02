@@ -22,7 +22,7 @@ struct MatchTeamsView: View {
                 .foregroundColor(.white).opacity(0.5)
                 .font(.system(size: 12))
 
-            TeamView(name: homeTeam.name, imageUrl: URL(string: homeTeam.imageURL ?? ""))
+            TeamView(name: awayTeam.name, imageUrl: URL(string: awayTeam.imageURL ?? ""))
                 .frame(width: 54, height: 100)
                 .multilineTextAlignment(.center)
         }

@@ -33,7 +33,7 @@ struct Serie: Codable {
 // MARK: - League
 struct League: Codable {
     let name: String
-    let imageURL: String
+    let imageURL: String?
     
     enum CodingKeys: String, CodingKey {
         case name
