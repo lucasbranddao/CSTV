@@ -47,12 +47,31 @@ struct MatchDetailsView: View {
                     .font(.system(size: 12)).bold()
                     .padding(.bottom, 10)
 
-                ForEach(0..<5) { _ in
-                    HStack() {
-                        PlayerCardView(nickname: "", realName: "Nome Jogador", side: .home)
-                        PlayerCardView(nickname: "Nickname", realName: "Nome Jogador", side: .away)
+                    if let homePlayers = $viewModel.players.wrappedValue[safe: 0],
+                       homePlayers.count >= 5,
+                       let awayPlayers = $viewModel.players.wrappedValue[safe: 1],
+                       awayPlayers.count >= 5 {
+                        ForEach(0..<5) { i in
+                            HStack() {
+                                let homePlayer = homePlayers[i]
+                                let awayPlayer = awayPlayers[i]
+                                PlayerCardView(
+                                    nickname: homePlayer.name,
+                                    realName: homePlayer.firstName + " " + homePlayer.lastName,
+                                    imageUrl: URL(string: homePlayer.imageURL ?? ""),
+                                    side: .home
+                                )
+                                PlayerCardView(
+                                    nickname: awayPlayer.name,
+                                    realName: awayPlayer.firstName + " " + awayPlayer.lastName,
+                                    imageUrl: URL(string: homePlayer.imageURL ?? ""),
+                                    side: .away
+                                )
+                            }
+
+                        }
+
                     }
-                }
 
                 Spacer()
             }
