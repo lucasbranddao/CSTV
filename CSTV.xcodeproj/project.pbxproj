@@ -30,6 +30,7 @@
 		8C6427FE2C83C70C005D88C1 /* MatchDetailsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6427FD2C83C70C005D88C1 /* MatchDetailsViewModel.swift */; };
 		8C6428002C83C7D6005D88C1 /* PlayerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6427FF2C83C7D6005D88C1 /* PlayerModel.swift */; };
 		8C6428022C83CEF8005D88C1 /* MatchDetailsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6428012C83CEF8005D88C1 /* MatchDetailsService.swift */; };
+		8C6428042C856F87005D88C1 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6428032C856F87005D88C1 /* AsyncImageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		8C6427FD2C83C70C005D88C1 /* MatchDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsViewModel.swift; sourceTree = "<group>"; };
 		8C6427FF2C83C7D6005D88C1 /* PlayerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerModel.swift; sourceTree = "<group>"; };
 		8C6428012C83CEF8005D88C1 /* MatchDetailsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchDetailsService.swift; sourceTree = "<group>"; };
+		8C6428032C856F87005D88C1 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -182,6 +184,7 @@
 				8C3FA96D2C7A63D30095C2FC /* MatchCardView.swift */,
 				8C3FA96F2C7A63F80095C2FC /* MatchTimeView.swift */,
 				8C3FA9742C7D00EE0095C2FC /* MatchTeamsView.swift */,
+				8C6428032C856F87005D88C1 /* AsyncImageView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -351,6 +354,7 @@
 				8C3FA9772C7E4A0E0095C2FC /* MatchListViewModel.swift in Sources */,
 				8C6428022C83CEF8005D88C1 /* MatchDetailsService.swift in Sources */,
 				8C3FA9702C7A63F80095C2FC /* MatchTimeView.swift in Sources */,
+				8C6428042C856F87005D88C1 /* AsyncImageView.swift in Sources */,
 				8C3FA9822C801EEB0095C2FC /* String+Extension.swift in Sources */,
 				8C3FA9792C7E4AA00095C2FC /* MatchListService.swift in Sources */,
 				8C3FA96E2C7A63D30095C2FC /* MatchCardView.swift in Sources */,

@@ -9,7 +9,6 @@ import SwiftUI
 
 @main
 struct CSTVApp: App {
-    
 
     init() {
         setupAppearance()
@@ -27,7 +26,7 @@ struct CSTVApp: App {
         navAppearance.configureWithTransparentBackground()
         navAppearance.backgroundColor = .clear
         navAppearance.shadowColor = .clear
-        navAppearance.titleTextAttributes = [.foregroundColor: UIColor.white] 
+        navAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
         navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().standardAppearance = navAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navAppearance

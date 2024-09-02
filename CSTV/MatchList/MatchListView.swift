@@ -16,30 +16,43 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
     @ObservedObject var viewModel: ViewModelObservable
 
     var body: some View {
-        NavigationStack {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 20) {
-                    Spacer()
-                    ForEach($viewModel.matches, id: \.self) { match in
-                        NavigationLink(value: Destination.matchDetails(match.wrappedValue)) {
+
+        if $viewModel.isLoading.wrappedValue {
+            VStack {
+                ProgressView()
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .scaleEffect(2)
+                    .padding()
+            }
+            .frame(maxWidth: .infinity, maxHeight: .infinity)
+            .background(Color(red: 22/255, green: 22/255, blue: 30/255))
+        }
+        else {
+            NavigationStack {
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 20) {
+                        Spacer()
+                        ForEach($viewModel.matches, id: \.self) { match in
+                            NavigationLink(value: Destination.matchDetails(match.wrappedValue)) {
                                 MatchCardView(match: match.wrappedValue)
                                     .padding([.leading, .trailing], 24)
                                     .frame(height: 176)
                             }
                         }
+                    }
+                }
+                .background(Color(red: 22/255, green: 22/255, blue: 30/255))
+                .navigationTitle("Partidas")
+                .navigationBarTitleDisplayMode(.large)
+                .navigationDestination(for: Destination.self) { destination in
+                    switch destination {
+                        case .matchDetails(let match):
+                            MatchDetailsView(match: match, viewModel: MatchDetailsViewModel(service: MatchDetailsService()))
+                    }
                 }
             }
-            .background(Color(red: 22/255, green: 22/255, blue: 30/255))
-            .navigationTitle("Partidas")
-            .navigationBarTitleDisplayMode(.large)
-            .navigationDestination(for: Destination.self) { destination in
-                switch destination {
-                    case .matchDetails(let match):
-                        MatchDetailsView(match: match, viewModel: MatchDetailsViewModel(service: MatchDetailsService()))
-                }
-            }
+            .navigationViewStyle(StackNavigationViewStyle())
         }
-        .navigationViewStyle(StackNavigationViewStyle())
     }
 
     init(viewModel: ViewModelObservable) {
