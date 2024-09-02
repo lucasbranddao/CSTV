@@ -11,7 +11,6 @@
 		8C3FA9442C7A4A410095C2FC /* MatchListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9432C7A4A410095C2FC /* MatchListView.swift */; };
 		8C3FA9462C7A4A430095C2FC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3FA9452C7A4A430095C2FC /* Assets.xcassets */; };
 		8C3FA9492C7A4A430095C2FC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8C3FA9482C7A4A430095C2FC /* Preview Assets.xcassets */; };
-		8C3FA9532C7A4A430095C2FC /* CSTVTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA9522C7A4A430095C2FC /* CSTVTests.swift */; };
 		8C3FA95D2C7A4A430095C2FC /* CSTVUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA95C2C7A4A430095C2FC /* CSTVUITests.swift */; };
 		8C3FA95F2C7A4A430095C2FC /* CSTVUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA95E2C7A4A430095C2FC /* CSTVUITestsLaunchTests.swift */; };
 		8C3FA96E2C7A63D30095C2FC /* MatchCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3FA96D2C7A63D30095C2FC /* MatchCardView.swift */; };
@@ -57,7 +56,6 @@
 		8C3FA9452C7A4A430095C2FC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8C3FA9482C7A4A430095C2FC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		8C3FA94E2C7A4A430095C2FC /* CSTVTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSTVTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C3FA9522C7A4A430095C2FC /* CSTVTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVTests.swift; sourceTree = "<group>"; };
 		8C3FA9582C7A4A430095C2FC /* CSTVUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CSTVUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C3FA95C2C7A4A430095C2FC /* CSTVUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVUITests.swift; sourceTree = "<group>"; };
 		8C3FA95E2C7A4A430095C2FC /* CSTVUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CSTVUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -152,7 +150,6 @@
 		8C3FA9512C7A4A430095C2FC /* CSTVTests */ = {
 			isa = PBXGroup;
 			children = (
-				8C3FA9522C7A4A430095C2FC /* CSTVTests.swift */,
 			);
 			path = CSTVTests;
 			sourceTree = "<group>";
@@ -374,7 +371,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8C3FA9532C7A4A430095C2FC /* CSTVTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

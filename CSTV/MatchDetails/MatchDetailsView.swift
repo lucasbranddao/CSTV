@@ -77,7 +77,7 @@ struct MatchDetailsView: View {
             .padding()
         }
         .navigationViewStyle(StackNavigationViewStyle())
-        .navigationBarHidden(true) // Hide the navigation bar entirely
+        .navigationBarHidden(true)
     }
 
     init(match: Match, viewModel: MatchDetailsViewModel) {
