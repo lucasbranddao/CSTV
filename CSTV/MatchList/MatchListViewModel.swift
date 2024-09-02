@@ -10,11 +10,13 @@ import Foundation
 protocol MatchListViewModelProtocol: ObservableObject {
     func fetchMatches()
     var matches: Matches { get set }
+    var isLoading: Bool { get set }
 }
 
 final class MatchListViewModel: MatchListViewModelProtocol {
     private let service: MatchListService
     @Published var matches: Matches = []
+    @Published var isLoading: Bool = true
 
     init(service: MatchListService) {
         self.service = service
@@ -25,6 +27,7 @@ final class MatchListViewModel: MatchListViewModelProtocol {
             switch result {
                 case .success(let matches):
                     DispatchQueue.main.async {
+                        self.isLoading = false
                         self.matches = matches.compactMap({ match in
                             Match(
                                 leagueAndSerie: match.league.name + " + " + match.serie.name,
