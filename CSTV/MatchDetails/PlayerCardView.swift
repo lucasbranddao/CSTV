@@ -40,13 +40,25 @@ struct PlayerCardView: View {
                                 .foregroundColor(Color(red: 108/255, green: 107/255, blue: 126/255))
                                 .padding(paddingAlignment, 4)
                         }
-                        AsyncImageView(url: imageUrl)
-                            .frame(width: 48, height: 48, alignment: alignment)
-                            .padding([paddingAlignment, .bottom], 20)
+                        AsyncImageView(
+                            url: imageUrl,
+                            failureView: {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color(red: 196/255, green: 196/255, blue: 196/255))
+                            }
+                        )
+                        .frame(width: 48, height: 48, alignment: alignment)
+                        .padding([paddingAlignment, .bottom], 20)
                     case .away:
-                        AsyncImageView(url: imageUrl)
-                            .frame(width: 48, height: 48, alignment: alignment)
-                            .padding([paddingAlignment, .bottom], 20)
+                        AsyncImageView(
+                            url: imageUrl,
+                            failureView: {
+                                RoundedRectangle(cornerRadius: 8)
+                                    .fill(Color(red: 196/255, green: 196/255, blue: 196/255))
+                            }
+                        )
+                        .frame(width: 48, height: 48, alignment: alignment)
+                        .padding([paddingAlignment, .bottom], 20)
                         VStack(alignment: textAlignment) {
                             Text(nickname)
                                 .font(.system(size: 14))
@@ -81,20 +93,25 @@ struct PlayerCardView: View {
     }
 }
 
-struct AsyncImageView: View {
+import SwiftUI
+
+struct AsyncImageView<FailureView: View>: View {
     let url: URL?
     let placeholder: Image
     let errorImage: Image
     let contentMode: ContentMode
+    let failureView: FailureView
 
     init(url: URL?,
          placeholder: Image = Image("avatar"),
          errorImage: Image = Image(systemName: "exclamationmark.triangle"),
-         contentMode: ContentMode = .fit) {
+         contentMode: ContentMode = .fit,
+         @ViewBuilder failureView: () -> FailureView) {
         self.url = url
         self.placeholder = placeholder
         self.errorImage = errorImage
         self.contentMode = contentMode
+        self.failureView = failureView()
     }
 
     var body: some View {
@@ -109,8 +126,7 @@ struct AsyncImageView: View {
                         .resizable()
                         .aspectRatio(contentMode: contentMode)
                 case .failure:
-                    RoundedRectangle(cornerRadius: 8)
-                        .fill(Color(red: 196/255, green: 196/255, blue: 196/255))
+                    failureView
                 @unknown default:
                     placeholder
                         .resizable()

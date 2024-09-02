@@ -36,6 +36,7 @@ struct Match: Hashable {
     }
     let id = UUID().uuidString
     let leagueAndSerie: String
+    let leagueImageUrl: String
     let homeTeam: Team?
     let awayTeam: Team?
     let status: Status

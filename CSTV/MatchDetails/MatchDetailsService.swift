@@ -35,7 +35,7 @@ final class MatchDetailsService: MatchDetailsServiceProtocol {
         guard let apiUrl else { return }
         var request = URLRequest(url: apiUrl)
         request.addValue("application/json", forHTTPHeaderField: "accept")
-        request.addValue("Bearer { Insira seu Token }", forHTTPHeaderField: "Authorization")
+        request.addValue("Bearer g2TV5SyVD7bTgvBmg05aE8MujczOku_8oX0nmSreRRQhFZOQx5o", forHTTPHeaderField: "Authorization")
 
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in

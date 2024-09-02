@@ -14,7 +14,7 @@ struct MatchTeamsView: View {
 
     var body: some View {
         HStack(spacing: 20) {
-            TeamView(name: homeTeam.name)
+            TeamView(name: homeTeam.name, imageUrl: URL(string: homeTeam.imageURL ?? ""))
                 .frame(width: 54, height: 100)
                 .multilineTextAlignment(.center)
 
@@ -22,7 +22,7 @@ struct MatchTeamsView: View {
                 .foregroundColor(.white).opacity(0.5)
                 .font(.system(size: 12))
 
-            TeamView(name: awayTeam.name)
+            TeamView(name: homeTeam.name, imageUrl: URL(string: homeTeam.imageURL ?? ""))
                 .frame(width: 54, height: 100)
                 .multilineTextAlignment(.center)
         }
@@ -36,11 +36,17 @@ struct MatchTeamsView: View {
 
 struct TeamView: View {
     let name: String
+    let imageUrl: URL?
     var body: some View {
         VStack {
-            Circle()
-                .fill(Color.gray)
-                .frame(width: 60, height: 60)
+            AsyncImageView(
+                url: imageUrl,
+                failureView: {
+                    Circle()
+                        .fill(Color.gray)
+                        .frame(width: 60, height: 60)
+                }
+            )
             Spacer()
             Text(name)
                 .foregroundColor(.white)
@@ -51,7 +57,11 @@ struct TeamView: View {
         }
     }
 
-    init(name: String) {
+    init(
+        name: String,
+        imageUrl: URL?
+    ) {
         self.name = name
+        self.imageUrl = imageUrl
     }
 }
