@@ -21,20 +21,20 @@ final class MatchListViewModel: MatchListViewModelProtocol {
     }
     
     func fetchMatches() {
-        let mockedMatch = Match(leagueAndSerie: "ESL + North American", leagueImageUrl: "https://cdn.psandascore.co/images/team/image/127597/577px_w7_m_esports_allmode.png", homeTeam: Team(name: "SK Gaming", imageURL: "https://cdn.pandascore.co/images/team/image/127597/577px_w7_m_esports_allmode.png", id: 1), awayTeam: Team(name: "Team Liquid", imageURL: "https://cdn.pandascore.co/images/team/image/127597/577px_w7_m_esports_allmode.png", id: 2), status: .notStarted, beginAt: "2024-08-29T16:00:00Z")
-        self.matches = [mockedMatch]
-        return
-
         service.getMatches(completion: { result in
             switch result {
                 case .success(let matches):
                     DispatchQueue.main.async {
-//                        self.matches = matches.compactMap({ Match(
-//                            leagueAndSerie: $0.league.name + " + " + serie.name,
-//                            homeTeam: $0.opponents[safe: 0]?.opponent,
-//                            awayTeam: $0.opponents[safe: 1]?.opponent,
-//                            status: Status(rawValue: $0.status) ?? .notStarted
-//                        )})
+                        self.matches = matches.compactMap({ match in
+                            Match(
+                                leagueAndSerie: match.league.name + " + " + match.serie.name,
+                                leagueImageUrl: match.league.imageURL ?? "",
+                                homeTeam: match.opponents[safe: 0]?.opponent,
+                                awayTeam: match.opponents[safe: 1]?.opponent,
+                                status: Status(rawValue: match.status) ?? .notStarted,
+                                beginAt: match.beginAt ?? ""
+                            )
+                        })
                     }
 
                 case  .failure(let error):

@@ -27,7 +27,7 @@ struct CSTVApp: App {
         navAppearance.configureWithTransparentBackground()
         navAppearance.backgroundColor = .clear
         navAppearance.shadowColor = .clear
-        navAppearance.titleTextAttributes = [.foregroundColor: UIColor.white] // Cor do título
+        navAppearance.titleTextAttributes = [.foregroundColor: UIColor.white] 
         navAppearance.largeTitleTextAttributes = [.foregroundColor: UIColor.white]
         UINavigationBar.appearance().standardAppearance = navAppearance
         UINavigationBar.appearance().scrollEdgeAppearance = navAppearance

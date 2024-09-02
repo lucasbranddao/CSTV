@@ -9,17 +9,16 @@ import Foundation
 import Combine
 
 protocol MatchDetailsServiceProtocol {
-    func getPlayersPublisher() -> AnyPublisher<Players, Error>
+    func getPlayersPublisher(id: Int) -> AnyPublisher<Players, Error>
 }
 
 final class MatchDetailsService: MatchDetailsServiceProtocol {
 
-    private let apiUrl = URL(string: "https://api.pandascore.co/teams/127597")
+    private let apiUrl = URL(string: "https://api.pandascore.co/teams/")
 
-
-    func getPlayersPublisher() -> AnyPublisher<Players, Error> {
+    func getPlayersPublisher(id: Int) -> AnyPublisher<Players, Error> {
         return Future<Players, Error> { promise in
-            self.getPlayers { result in
+            self.getPlayers(id: id) { result in
                 switch result {
                     case .success(let response):
                         promise(.success(response.players))
@@ -31,9 +30,9 @@ final class MatchDetailsService: MatchDetailsServiceProtocol {
         .eraseToAnyPublisher()
     }
 
-    func getPlayers(completion: @escaping (Swift.Result<PlayersResponse, Error>) -> Void) {
+    func getPlayers(id: Int, completion: @escaping (Swift.Result<PlayersResponse, Error>) -> Void) {
         guard let apiUrl else { return }
-        var request = URLRequest(url: apiUrl)
+        var request = URLRequest(url: apiUrl.appending(path: "/\(id)"))
         request.addValue("application/json", forHTTPHeaderField: "accept")
         request.addValue("Bearer g2TV5SyVD7bTgvBmg05aE8MujczOku_8oX0nmSreRRQhFZOQx5o", forHTTPHeaderField: "Authorization")
 

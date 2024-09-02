@@ -83,6 +83,6 @@ struct MatchDetailsView: View {
     init(match: Match, viewModel: MatchDetailsViewModel) {
         self.match = match
         self.viewModel = viewModel
-        self.viewModel.fetchPlayers()
+        self.viewModel.fetchPlayers(homeId: match.homeTeam?.id ?? 0, awayId: match.awayTeam?.id ?? 0)
     }
 }

@@ -13,12 +13,12 @@ protocol MatchListServiceProtocol {
 
 final class MatchListService: MatchListServiceProtocol {
 
-    private let apiUrl = URL(string: "https://api.pandascore.co/matches?page[size]=5&page[number]=2")
+    private let apiUrl = URL(string: "https://api.pandascore.co/matches?page[size]=10&page[number]=1&filter[videogame]=3&filter[opponents_filled]=true")
 
     func getMatches(completion: @escaping (Swift.Result<MatchesResponse, Error>) -> Void) {
         guard let apiUrl else { return }
         var request = URLRequest(url: apiUrl)
-        request.addValue("application/json", forHTTPHeaderField: "accept")
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer g2TV5SyVD7bTgvBmg05aE8MujczOku_8oX0nmSreRRQhFZOQx5o", forHTTPHeaderField: "Authorization")
 
 

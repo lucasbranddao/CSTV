@@ -22,6 +22,19 @@ enum Status: String {
                 Color(red: 250/255, green: 250/255, blue: 250/255)
         }
     }
+
+    init?(rawValue: String) {
+        switch rawValue {
+            case "not_started":
+                self = .notStarted
+            case "running":
+                self = .running
+            case "finished":
+                self = .finished
+            default:
+                self = .notStarted
+        }
+    }
 }
 
 typealias Matches = [Match]

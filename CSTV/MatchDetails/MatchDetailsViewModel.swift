@@ -9,7 +9,7 @@ import Foundation
 import Combine
 
 protocol MatchDetailsViewModelProtocol: ObservableObject {
-    func fetchPlayers()
+    func fetchPlayers(homeId: Int, awayId: Int)
     var players: [Players] { get set }
 }
 
@@ -22,9 +22,9 @@ final class MatchDetailsViewModel: MatchDetailsViewModelProtocol {
         self.service = service
     }
 
-    func fetchPlayers() {
-        let firstRequest = service.getPlayersPublisher()
-        let secondRequest = service.getPlayersPublisher()
+    func fetchPlayers(homeId: Int, awayId: Int) {
+        let firstRequest = service.getPlayersPublisher(id: homeId)
+        let secondRequest = service.getPlayersPublisher(id: awayId)
 
         Publishers.Zip(firstRequest, secondRequest)
             .receive(on: DispatchQueue.main)
