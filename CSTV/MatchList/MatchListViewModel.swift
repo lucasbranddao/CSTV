@@ -31,7 +31,8 @@ final class MatchListViewModel: MatchListViewModelProtocol {
     func fetchMatches() {
         isLoading = true
         currentPage = 1
-        service.getMatches(page: currentPage, completion: { result in
+        
+        service.loadMatches(completion: { result in
             DispatchQueue.main.async {
                 self.isLoading = false
                 switch result {
@@ -39,15 +40,8 @@ final class MatchListViewModel: MatchListViewModelProtocol {
                         if matches.isEmpty {
                             self.allDataFetched = true
                         } else {
-                            self.matches = matches.compactMap { match in
-                                Match(
-                                    leagueAndSerie: match.league.name + " + " + match.serie.name,
-                                    leagueImageUrl: match.league.imageURL ?? "",
-                                    homeTeam: match.opponents[safe: 0]?.opponent,
-                                    awayTeam: match.opponents[safe: 1]?.opponent,
-                                    status: Status(rawValue: match.status) ?? .notStarted,
-                                    beginAt: match.beginAt ?? ""
-                                )
+                            self.matches = matches.compactMap { [weak self] match in
+                                self?.mapMatch(match)
                             }
                         }
                     case .failure(let error):
@@ -71,15 +65,8 @@ final class MatchListViewModel: MatchListViewModelProtocol {
                         if matches.isEmpty {
                             self.allDataFetched = true
                         } else {
-                            self.matches.append(contentsOf: matches.compactMap { match in
-                                Match(
-                                    leagueAndSerie: match.league.name + " + " + match.serie.name,
-                                    leagueImageUrl: match.league.imageURL ?? "",
-                                    homeTeam: match.opponents[safe: 0]?.opponent,
-                                    awayTeam: match.opponents[safe: 1]?.opponent,
-                                    status: Status(rawValue: match.status) ?? .notStarted,
-                                    beginAt: match.beginAt ?? ""
-                                )
+                            self.matches.append(contentsOf: matches.compactMap { [weak self] match in
+                                self?.mapMatch(match)
                             })
                         }
                     case .failure(let error):
@@ -87,5 +74,22 @@ final class MatchListViewModel: MatchListViewModelProtocol {
                 }
             }
         })
+    }
+
+    private func mapMatch(_ match: MatchResponse) -> Match {
+        let homeTeam = match.opponents[safe: 0]?.opponent
+        let homeScore = match.results.first(where: { $0.teamID == homeTeam?.id })?.score
+        let awayTeam = match.opponents[safe: 1]?.opponent
+        let awayScore = match.results.first(where: { $0.teamID == awayTeam?.id })?.score
+        return Match(
+            leagueAndSerie: match.league.name + " + " + match.serie.name,
+            leagueImageUrl: match.league.imageURL ?? "",
+            homeTeam: homeTeam,
+            homeTeamScore: homeScore ?? 0,
+            awayTeam: awayTeam,
+            awayTeamScore: awayScore ?? 0,
+            status: Status(rawValue: match.status) ?? .notStarted,
+            beginAt: match.beginAt ?? ""
+        )
     }
 }

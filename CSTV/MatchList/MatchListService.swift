@@ -6,43 +6,48 @@
 //
 
 import Foundation
+import Combine
 
 final class MatchListService {
-
-    private let baseUrl = "https://api.pandascore.co/matches"
+    private let baseUrl = "https://api.pandascore.co/csgo/matches"
     private let pageSize = 5
+    private var cancellables = Set<AnyCancellable>()
 
-    func getMatches(page: Int, completion: @escaping (Result<MatchesResponse, Error>) -> Void) {
-        guard let url = URL(string: "\(baseUrl)?page[size]=\(pageSize)&page[number]=\(page)&filter[videogame]=3&filter[opponents_filled]=true") else {
+    func loadMatches(completion: @escaping (Result<MatchesResponse, Error>) -> Void) {
+        guard
+            let runningMatchesUrl = URL(string: "\(baseUrl)/running?filter[opponents_filled]=true&page[size]=3&page[number]=1"),
+            let nextMatchesUrl = URL(string: "\(baseUrl)?page[size]=\(pageSize)&page[number]=1&filter[tournament_id]=14450&filter[opponents_filled]=true")
+        else {
             completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey : "Invalid URL"])))
             return
         }
 
-        var request = URLRequest(url: url)
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer \(APIConstants.token)", forHTTPHeaderField: "Authorization")
+        let runningMatchesPublisher = NetworkService.shared.performRequest(with: runningMatchesUrl, responseType: MatchesResponse.self)
+        let nextMatchesPublisher = NetworkService.shared.performRequest(with: nextMatchesUrl, responseType: MatchesResponse.self)
 
-        let task = URLSession.shared.dataTask(with: request) { data, response, error in
-            if let error = error {
-                completion(.failure(error))
-                return
-            }
+        Publishers.Zip(runningMatchesPublisher, nextMatchesPublisher)
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completionStatus in
+                switch completionStatus {
+                    case .finished:
+                        break
+                    case .failure(let error):
+                        completion(.failure(error))
+                }
+            }, receiveValue: { runningMatches, nextMatches in
+                let combinedMatches = runningMatches + nextMatches
+                completion(.success(combinedMatches))
+            })
+            .store(in: &cancellables)
+    }
 
-            guard let data = data else {
-                let error = NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey : "No data received"])
-                completion(.failure(error))
-                return
-            }
-
-            do {
-                let decoder = JSONDecoder()
-                let matchDetails = try decoder.decode(MatchesResponse.self, from: data)
-                completion(.success(matchDetails))
-            } catch {
-                completion(.failure(error))
-            }
+    func getMatches(page: Int, completion: @escaping (Result<MatchesResponse, Error>) -> Void) {
+        guard let url = URL(string: "\(baseUrl)?page[size]=\(pageSize)&page[number]=\(page)&filter[tournament_id]=14450&filter[opponents_filled]=true") else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey : "Invalid URL"])))
+            return
         }
-        task.resume()
+
+        NetworkService.shared.performRequest(with: url, responseType: MatchesResponse.self, completion: completion)
     }
 }
 

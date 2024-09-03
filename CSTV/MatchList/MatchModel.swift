@@ -19,7 +19,7 @@ enum Status: String {
             case .running:
                 Color(red: 244/255, green: 42/255, blue: 53/255)
             case .finished:
-                Color(red: 250/255, green: 250/255, blue: 250/255)
+                Color(red: 81/255, green: 80/255, blue: 95/255)
         }
     }
 
@@ -51,7 +51,9 @@ struct Match: Hashable {
     let leagueAndSerie: String
     let leagueImageUrl: String
     let homeTeam: Team?
+    let homeTeamScore: Int
     let awayTeam: Team?
+    let awayTeamScore: Int
     let status: Status
     let beginAt: String
     func timeString() -> String {

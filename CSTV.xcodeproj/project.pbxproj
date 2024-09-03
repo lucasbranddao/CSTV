@@ -32,6 +32,8 @@
 		8C6428042C856F87005D88C1 /* AsyncImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6428032C856F87005D88C1 /* AsyncImageView.swift */; };
 		8C6428062C863C38005D88C1 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6428052C863C38005D88C1 /* Color+Extension.swift */; };
 		8C6428092C86C0BD005D88C1 /* API+Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C6428082C86C0BD005D88C1 /* API+Constants.swift */; };
+		8C64280B2C86C24D005D88C1 /* MatchTeamview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C64280A2C86C24D005D88C1 /* MatchTeamview.swift */; };
+		8C64280D2C8755F6005D88C1 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C64280C2C8755F6005D88C1 /* NetworkManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -80,6 +82,8 @@
 		8C6428032C856F87005D88C1 /* AsyncImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AsyncImageView.swift; sourceTree = "<group>"; };
 		8C6428052C863C38005D88C1 /* Color+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		8C6428082C86C0BD005D88C1 /* API+Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "API+Constants.swift"; sourceTree = "<group>"; };
+		8C64280A2C86C24D005D88C1 /* MatchTeamview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MatchTeamview.swift; sourceTree = "<group>"; };
+		8C64280C2C8755F6005D88C1 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,6 +191,7 @@
 				8C3FA96F2C7A63F80095C2FC /* MatchTimeView.swift */,
 				8C3FA9742C7D00EE0095C2FC /* MatchTeamsView.swift */,
 				8C6428032C856F87005D88C1 /* AsyncImageView.swift */,
+				8C64280A2C86C24D005D88C1 /* MatchTeamview.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -225,6 +230,7 @@
 			isa = PBXGroup;
 			children = (
 				8C6428082C86C0BD005D88C1 /* API+Constants.swift */,
+				8C64280C2C8755F6005D88C1 /* NetworkManager.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -364,9 +370,11 @@
 				8C3FA9442C7A4A410095C2FC /* MatchListView.swift in Sources */,
 				8C3FA97E2C7EDB8F0095C2FC /* Array+Extension.swift in Sources */,
 				8C3FA9772C7E4A0E0095C2FC /* MatchListViewModel.swift in Sources */,
+				8C64280D2C8755F6005D88C1 /* NetworkManager.swift in Sources */,
 				8C6428022C83CEF8005D88C1 /* MatchDetailsService.swift in Sources */,
 				8C3FA9702C7A63F80095C2FC /* MatchTimeView.swift in Sources */,
 				8C6428042C856F87005D88C1 /* AsyncImageView.swift in Sources */,
+				8C64280B2C86C24D005D88C1 /* MatchTeamview.swift in Sources */,
 				8C3FA9822C801EEB0095C2FC /* String+Extension.swift in Sources */,
 				8C3FA9792C7E4AA00095C2FC /* MatchListService.swift in Sources */,
 				8C3FA96E2C7A63D30095C2FC /* MatchCardView.swift in Sources */,

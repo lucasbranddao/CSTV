@@ -39,7 +39,12 @@ struct MatchDetailsView: View {
                 }
                 .frame(maxWidth: .infinity)
 
-                MatchTeamsView(homeTeam: match.homeTeam, awayTeam: match.awayTeam)
+                MatchTeamsView(
+                    homeTeam: match.homeTeam,
+                    homeTeamScore: match.homeTeamScore,
+                    awayTeam: match.awayTeam,
+                    awayTeamScore: match.awayTeamScore
+                )
 
                 Text(match.timeString())
                     .foregroundColor(.white)

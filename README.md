@@ -5,7 +5,7 @@
 
 CSTV is an iOS application designed to show CS2 matches info. This project is built using Swift and follows modern iOS development practices. Such as:
 - MVVM architecture
-- Reactive programming (RxSwift / Combine)
+- Combine
 - Responsiveness
 - Componetization
 - Pagination

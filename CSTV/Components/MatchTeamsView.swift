@@ -10,58 +10,35 @@ import SwiftUI
 struct MatchTeamsView: View {
 
     let homeTeam: Team
+    let homeTeamScore: Int
     let awayTeam: Team
+    let awayTeamScore: Int
 
     var body: some View {
         HStack(spacing: 20) {
-            TeamView(name: homeTeam.name, imageUrl: URL(string: homeTeam.imageURL ?? ""))
-                .frame(width: 54, height: 100)
+            TeamView(name: homeTeam.name, imageUrl: URL(string: homeTeam.imageURL ?? ""), score: homeTeamScore, side: .home)
+                .frame(width: 80, height: 100)
                 .multilineTextAlignment(.center)
 
             Text("VS")
                 .foregroundColor(.white).opacity(0.5)
                 .font(.system(size: 12))
 
-            TeamView(name: awayTeam.name, imageUrl: URL(string: awayTeam.imageURL ?? ""))
-                .frame(width: 54, height: 100)
+            TeamView(name: awayTeam.name, imageUrl: URL(string: awayTeam.imageURL ?? ""), score: awayTeamScore, side: .away)
+                .frame(width: 80, height: 100)
                 .multilineTextAlignment(.center)
         }
     }
 
-    init(homeTeam: Team?, awayTeam: Team?) {
+    init(
+        homeTeam: Team?,
+        homeTeamScore: Int,
+        awayTeam: Team?,
+        awayTeamScore: Int
+    ) {
         self.homeTeam = homeTeam ?? Team(name: "--", imageURL: nil, id: 0)
         self.awayTeam = awayTeam ?? Team(name: "--", imageURL: nil, id: 0)
-    }
-}
-
-struct TeamView: View {
-    let name: String
-    let imageUrl: URL?
-    var body: some View {
-        VStack {
-            AsyncImageView(
-                url: imageUrl,
-                failureView: {
-                    Circle()
-                        .fill(Color.gray)
-                        .frame(width: 60, height: 60)
-                }
-            )
-            Spacer()
-            Text(name)
-                .foregroundColor(.white)
-                .font(.system(size: 10))
-                .padding(.bottom, 8)
-                .frame(maxHeight: .infinity)
-
-        }
-    }
-
-    init(
-        name: String,
-        imageUrl: URL?
-    ) {
-        self.name = name
-        self.imageUrl = imageUrl
+        self.homeTeamScore = homeTeamScore
+        self.awayTeamScore = awayTeamScore
     }
 }

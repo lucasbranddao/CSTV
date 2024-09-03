@@ -21,7 +21,12 @@ struct MatchCardView: View {
             }
             .padding([.top, .trailing], -2)
 
-            MatchTeamsView(homeTeam: match.homeTeam, awayTeam: match.awayTeam)
+            MatchTeamsView(
+                homeTeam: match.homeTeam,
+                homeTeamScore: match.homeTeamScore,
+                awayTeam: match.awayTeam,
+                awayTeamScore: match.awayTeamScore
+            )
             Spacer()
             Divider()
                 .background(.gray)
