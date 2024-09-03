@@ -24,7 +24,8 @@ struct MatchTimeView: View {
                 .padding(.bottom, 9)
                 .padding(.leading, 8)
         }
-        .frame(width: 100, height: 80)
+        .frame(minWidth: 90)
+        .frame(width: CGFloat(text.count)*10, height: 80)
     }
 
     init(text: String, color: Color) {
