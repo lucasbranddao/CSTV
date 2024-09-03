@@ -21,6 +21,7 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
             VStack {
                 ProgressView()
                     .progressViewStyle(CircularProgressViewStyle())
+                    .tint(.lightGray)
                     .scaleEffect(2)
                     .padding()
             }
@@ -50,6 +51,12 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
                             MatchDetailsView(match: match, viewModel: MatchDetailsViewModel(service: MatchDetailsService()))
                     }
                 }
+                .refreshable {
+                    viewModel.fetchMatches()
+                }
+            }
+            .onAppear {
+                UIRefreshControl.appearance().tintColor = .lightGray
             }
             .navigationViewStyle(StackNavigationViewStyle())
         }
