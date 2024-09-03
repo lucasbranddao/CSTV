@@ -8,5 +8,5 @@
 import Foundation
 
 struct APIConstants {
-    static let token = "g2TV5SyVD7bTgvBmg05aE8MujczOku_8oX0nmSreRRQhFZOQx5o"
+    static let token = "{ Insert your token }"
 }
