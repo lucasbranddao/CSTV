@@ -15,7 +15,7 @@ struct MatchResponse: Codable {
     let beginAt: String?
     let league: League
     let opponents: [Opponent]
-    let results: [Result]
+    let results: [Score]
     let status: String
     let serie: Serie
 
@@ -59,7 +59,7 @@ struct Team: Codable {
 }
 
 // MARK: - Result
-struct Result: Codable {
+struct Score: Codable {
     let score: Int
     let teamID: Int
     

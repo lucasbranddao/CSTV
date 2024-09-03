@@ -55,14 +55,14 @@ struct MatchDetailsView: View {
                                 let homePlayer = homePlayers[i]
                                 let awayPlayer = awayPlayers[i]
                                 PlayerCardView(
-                                    nickname: homePlayer.name,
-                                    realName: homePlayer.firstName + " " + homePlayer.lastName,
+                                    nickname: homePlayer.name ?? "--",
+                                    realName: homePlayer.firstName ?? "--" + " " + (homePlayer.lastName ?? "--"),
                                     imageUrl: URL(string: homePlayer.imageURL ?? ""),
                                     side: .home
                                 )
                                 PlayerCardView(
-                                    nickname: awayPlayer.name,
-                                    realName: awayPlayer.firstName + " " + awayPlayer.lastName,
+                                    nickname: awayPlayer.name ?? "--",
+                                    realName: awayPlayer.firstName ?? "--" + " " + (awayPlayer.lastName ?? "--"),
                                     imageUrl: URL(string: homePlayer.imageURL ?? ""),
                                     side: .away
                                 )

@@ -27,8 +27,7 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
             .background(Color.darkBlue)
-        }
-        else {
+        } else {
             NavigationStack {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 20) {
@@ -38,7 +37,19 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
                                 MatchCardView(match: match.wrappedValue)
                                     .padding([.leading, .trailing], 24)
                                     .frame(height: 176)
+                                    .onAppear {
+                                        if match.wrappedValue == $viewModel.matches.wrappedValue.last {
+                                            viewModel.fetchMoreMatches()
+                                        }
+                                    }
                             }
+                        }
+                        if viewModel.isLoadingMore {
+                            ProgressView()
+                                .progressViewStyle(CircularProgressViewStyle())
+                                .tint(.lightGray)
+                                .scaleEffect(1.5)
+                                .padding()
                         }
                     }
                 }
@@ -66,9 +77,4 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
         self.viewModel = viewModel
         viewModel.fetchMatches()
     }
-}
-
-
-#Preview {
-    MatchListView(viewModel: MatchListViewModel(service: MatchListService()))
 }

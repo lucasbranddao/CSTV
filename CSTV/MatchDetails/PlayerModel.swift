@@ -16,10 +16,10 @@ struct PlayersResponse: Codable {
 
 // MARK: - Player
 struct PlayerModel: Codable {
-    let firstName: String
+    let firstName: String?
     let imageURL: String?
-    let lastName: String
-    let name: String
+    let lastName: String?
+    let name: String?
 
     enum CodingKeys: String, CodingKey {
         case firstName = "first_name"

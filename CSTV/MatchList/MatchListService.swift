@@ -7,20 +7,20 @@
 
 import Foundation
 
-protocol MatchListServiceProtocol {
-    func getMatches(completion: @escaping (Swift.Result<MatchesResponse, Error>) -> Void)
-}
+final class MatchListService {
 
-final class MatchListService: MatchListServiceProtocol {
+    private let baseUrl = "https://api.pandascore.co/matches"
+    private let pageSize = 5
 
-    private let apiUrl = URL(string: "https://api.pandascore.co/matches?page[size]=10&page[number]=1&filter[videogame]=3&filter[opponents_filled]=true")
+    func getMatches(page: Int, completion: @escaping (Result<MatchesResponse, Error>) -> Void) {
+        guard let url = URL(string: "\(baseUrl)?page[size]=\(pageSize)&page[number]=\(page)&filter[videogame]=3&filter[opponents_filled]=true") else {
+            completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey : "Invalid URL"])))
+            return
+        }
 
-    func getMatches(completion: @escaping (Swift.Result<MatchesResponse, Error>) -> Void) {
-        guard let apiUrl else { return }
-        var request = URLRequest(url: apiUrl)
+        var request = URLRequest(url: url)
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.addValue("Bearer g2TV5SyVD7bTgvBmg05aE8MujczOku_8oX0nmSreRRQhFZOQx5o", forHTTPHeaderField: "Authorization")
-
+        request.addValue("Bearer \(APIConstants.token)", forHTTPHeaderField: "Authorization")
 
         let task = URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
@@ -45,3 +45,4 @@ final class MatchListService: MatchListServiceProtocol {
         task.resume()
     }
 }
+
