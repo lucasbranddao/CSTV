@@ -20,7 +20,7 @@ struct MatchDetailsView: View {
 
     var body: some View {
         ZStack {
-            Color(red: 22/255, green: 22/255, blue: 30/255)
+            Color.darkBlue
                 .edgesIgnoringSafeArea(.all)
             VStack(spacing: 20) {
                 ZStack {

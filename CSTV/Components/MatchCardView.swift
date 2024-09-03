@@ -37,7 +37,7 @@ struct MatchCardView: View {
                 )
 
                 Text(match.leagueAndSerie)
-                    .foregroundColor(.gray)
+                    .foregroundColor(.lightGray)
                     .font(.system(size: 8))
 
                 Spacer()
@@ -46,7 +46,7 @@ struct MatchCardView: View {
             .padding([.bottom], 8)
             .frame(height: 32)
         }
-        .background(Color(red: 39/255, green: 38/255, blue: 57/255))
+        .background(Color.midDarkBlue)
         .cornerRadius(16)
         .shadow(radius: 5)
     }

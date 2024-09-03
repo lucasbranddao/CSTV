@@ -25,7 +25,7 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
                     .padding()
             }
             .frame(maxWidth: .infinity, maxHeight: .infinity)
-            .background(Color(red: 22/255, green: 22/255, blue: 30/255))
+            .background(Color.darkBlue)
         }
         else {
             NavigationStack {
@@ -41,7 +41,7 @@ struct MatchListView<ViewModelObservable>: View where ViewModelObservable: Match
                         }
                     }
                 }
-                .background(Color(red: 22/255, green: 22/255, blue: 30/255))
+                .background(Color.darkBlue)
                 .navigationTitle("Partidas")
                 .navigationBarTitleDisplayMode(.large)
                 .navigationDestination(for: Destination.self) { destination in

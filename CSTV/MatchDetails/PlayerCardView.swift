@@ -21,7 +21,7 @@ struct PlayerCardView: View {
         ZStack {
             Spacer()
                 .frame(width: 200, height: 54)
-                .background(Color(red: 40/255, green: 40/255, blue: 55/255))
+                .background(Color.midDarkBlue)
                 .cornerRadius(12)
                 .padding(paddingAlignment, 8)
 
@@ -37,14 +37,14 @@ struct PlayerCardView: View {
                                 .padding(paddingAlignment, 4)
                             Text(realName)
                                 .font(.system(size: 12))
-                                .foregroundColor(Color(red: 108/255, green: 107/255, blue: 126/255))
+                                .foregroundColor(Color.lightBlue)
                                 .padding(paddingAlignment, 4)
                         }
                         AsyncImageView(
                             url: imageUrl,
                             failureView: {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color(red: 196/255, green: 196/255, blue: 196/255))
+                                    .fill(Color.lightGray)
                             }
                         )
                         .frame(width: 48, height: 48, alignment: alignment)
@@ -54,7 +54,7 @@ struct PlayerCardView: View {
                             url: imageUrl,
                             failureView: {
                                 RoundedRectangle(cornerRadius: 8)
-                                    .fill(Color(red: 196/255, green: 196/255, blue: 196/255))
+                                    .fill(Color.lightGray)
                             }
                         )
                         .frame(width: 48, height: 48, alignment: alignment)
@@ -67,7 +67,7 @@ struct PlayerCardView: View {
                                 .padding(paddingAlignment, 4)
                             Text(realName)
                                 .font(.system(size: 12))
-                                .foregroundColor(Color(red: 108/255, green: 107/255, blue: 126/255))
+                                .foregroundColor(Color.lightBlue)
                                 .padding(paddingAlignment, 4)
                         }
                         Spacer()
