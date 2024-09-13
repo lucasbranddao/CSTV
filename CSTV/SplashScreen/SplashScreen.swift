@@ -10,7 +10,7 @@ import SwiftUI
 struct SplashScreenView: View {
     var body: some View {
         VStack {
-            Image("fuze")
+            Image("cs_logo")
                 .resizable()
                 .scaledToFit()
                 .frame(width: 100, height: 100)
